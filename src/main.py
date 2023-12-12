@@ -1,6 +1,5 @@
-# The code is importing the necessary libraries, `yfinance` and `datetime`, to retrieve historical
-# stock data.
 import yfinance as yf
+import plotly.graph_objs as go
 import datetime as dt
 
 # Define the ticker symbol and time frame
@@ -12,12 +11,25 @@ end = dt.datetime(2023, 12, 12)
 tickerData = yf.Ticker(tickerSymbol)
 
 # Get historical prices for this ticker
-tickerDf = tickerData.history(start=start, end=end, interval='5d')
+tickerDf = tickerData.history(start=start, end=end, interval='1d')
+
+# Create a candlestick chart
+fig = go.Figure(data=[go.Candlestick(x=tickerDf.index,
+                open=tickerDf['Open'],
+                high=tickerDf['High'],
+                low=tickerDf['Low'],
+                close=tickerDf['Close'])])
+
+# Customize the appearance of the chart
+fig.update_layout(
+    title=f"{tickerSymbol} Candlestick Chart",
+    xaxis_title='Date',
+    yaxis_title='Price (USD)',
+    xaxis_rangeslider_visible=True,  # Add a range slider for zooming
+)
+
+# Show the chart
+fig.show()
 
 # See your data
 print(tickerDf)
-save_to_csv = False  # Set this to True to save the data to CSV
-
-if save_to_csv:
-    tickerDf.to_csv('NVDA_stock_data.csv', index=False)
-

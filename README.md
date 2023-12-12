@@ -37,7 +37,7 @@ python main.py
 This script will fetch historical stock data and perform basic data analysis, visualizing the stock's closing prices over time.
 
 Saving Data to CSV
-To save the fetched data to a CSV file, uncomment the relevant line in main.py. This will generate a file named stock_data.csv in the project directory.
+To save the fetched data to a CSV file,change the relevant line in main.py to true. This will generate a file named stock_data.csv in the project directory.
 
 Contact
 For any queries or suggestions, feel free to contact morris9510@gmail.com
