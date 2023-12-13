@@ -10,6 +10,7 @@ This project focuses on fetching and analyzing stock market data, with an emphas
 
 - Python 3.x
 - pip
+- Django
 - virtualenv (optional, but recommended)
 
 ### Setting Up a Virtual Environment
